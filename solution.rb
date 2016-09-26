@@ -2,11 +2,8 @@
 require "sinatra"
 
 get '/' do
-  headers['permiso'] = "soy-un-token-secreto"
-
-  if request.headers.include?('permiso') 
-   "Si lo logramos"
-   else
+   request.env['HTTP_PERMISO'] == 
+   "soy-un-token-secreto" ?
+   "Si lo logramos!" : 
    "Sin permiso"
-  end
 end
